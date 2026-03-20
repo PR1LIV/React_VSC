@@ -1,21 +1,11 @@
-import { useState } from 'react'
-
-import Header from './components/UI/Header/Header.jsx'
-
+import Counter from './Counter';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <Header />
-      <h1>Счётчик кликов</h1>
-      <button onClick={() => setCount(count + 1)}>
-        Клик: {count}
-      </button>
-      <Header /> {/* Для примера */}
-    </>
-  )
+    <div>
+      <Counter />
+    </div>
+  );
 }
 
-export default App
+export default App;
