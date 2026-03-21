@@ -1,0 +1,16 @@
+.header {
+  background-color: #1f2937;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  font-size: 32px;
+}
+
+.subtitle {
+  margin-top: 10px;
+  font-size: 18px;
+}
