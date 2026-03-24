@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Counter from './Counter';
+import Products from './Products';
 
 function App() {
   const [showFooter, setShowFooter] = useState(true);
@@ -18,17 +19,19 @@ function App() {
     <div>
       <Header
         title="Мой React проект"
-        subtitle="Мой первый React проект"
+        subtitle="Учебный проект на React"
       />
 
       <Counter />
+
+      <Products />
 
       <button onClick={toggleFooter}>
         {showFooter ? 'Скрыть Footer' : 'Показать Footer'}
       </button>
 
       {showFooter && (
-        <Footer text="Мой сайт." />
+        <Footer text="© 2026 Мой сайт. Все права защищены." />
       )}
     </div>
   );
