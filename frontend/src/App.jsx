@@ -31,7 +31,7 @@ function App() {
       </button>
 
       {showFooter && (
-        <Footer text="© 2026 Мой сайт. Все права защищены." />
+        <Footer text="Мой сайт." />
       )}
     </div>
   );
