@@ -7,7 +7,6 @@ function Products() {
 
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     fetchProducts();
@@ -19,7 +18,6 @@ function Products() {
       setError('');
 
       const response = await fetch('http://localhost:3001/products');
-
       if (!response.ok) {
         throw new Error('Не удалось загрузить товары');
       }
@@ -31,6 +29,11 @@ function Products() {
     } finally {
       setLoading(false);
     }
+  }
+
+  function getNextId(products) {
+    if (products.length === 0) return 1;
+    return Math.max(...products.map((product) => Number(product.id))) + 1;
   }
 
   async function handleSubmit(event) {
@@ -49,14 +52,14 @@ function Products() {
       return;
     }
 
-    try {
-      setIsSubmitting(true);
-      setError('');
+    const newProduct = {
+      id: getNextId(products),
+      title: trimmedTitle,
+      price: numericPrice,
+    };
 
-      const newProduct = {
-        title: trimmedTitle,
-        price: numericPrice,
-      };
+    try {
+      setError('');
 
       const response = await fetch('http://localhost:3001/products', {
         method: 'POST',
@@ -72,13 +75,13 @@ function Products() {
 
       const createdProduct = await response.json();
 
-      setProducts((prevProducts) => [...prevProducts, createdProduct]);
+      setProducts((prev) => [...prev, createdProduct]);
+
+      // сброс формы
       setTitle('');
       setPrice('');
     } catch (err) {
       setError(err.message);
-    } finally {
-      setIsSubmitting(false);
     }
   }
 
@@ -95,33 +98,29 @@ function Products() {
           type="text"
           placeholder="Название товара"
           value={title}
-          onChange={(event) => setTitle(event.target.value)}
-          style={{ marginRight: '10px' }}
+          onChange={(e) => setTitle(e.target.value)}
         />
 
         <input
           type="number"
           placeholder="Цена"
           value={price}
-          onChange={(event) => setPrice(event.target.value)}
-          style={{ marginRight: '10px' }}
+          onChange={(e) => setPrice(e.target.value)}
         />
 
-        <button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? 'Добавление...' : 'Добавить'}
-        </button>
+        <button type="submit">Добавить</button>
       </form>
 
-      {error && <p style={{ color: 'red' }}>Ошибка: {error}</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
 
       {products.length === 0 ? (
         <p>Товаров пока нет</p>
       ) : (
         <ul>
-          {products.map((product) => (
-            <li key={product.id}>
-              {product.title} — {product.price} ₽
-            </li>
+            {products.map((product, index) => (
+              <li key={product.id}>
+                {index + 1}. {product.title} — {product.price} ₽
+              </li>
           ))}
         </ul>
       )}

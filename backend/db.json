@@ -1,4 +1,8 @@
 {
+    "site": {
+    "logo": "/images/logo.png",
+    "background": "/images/bg.jpg"
+  },
   "products": [
     {
       "id": "1",
