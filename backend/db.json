@@ -1,19 +1,25 @@
 {
   "products": [
     {
-      "id": 1,
+      "id": "1",
       "title": "iPhone ",
       "price": 100000
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Samsung",
       "price": 80000
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Xiaomi",
       "price": 50000
+    },
+    {
+      "title": "Dyson",
+      "price": 35000,
+      "id": "Ql9LJQda-Fk"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
