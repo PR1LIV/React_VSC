@@ -3,7 +3,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Counter from './Counter';
 import Products from './Products';
-import Image from './components/Image.jsx';
+import Image from './components/image';
 
 function App() {
   const [showFooter, setShowFooter] = useState(true);

@@ -1,5 +1,5 @@
 {
-    "site": {
+  "site": {
     "logo": "/images/logo.png",
     "background": "/images/bg.jpg"
   },
@@ -17,12 +17,12 @@
     {
       "id": "3",
       "title": "Xiaomi",
-      "price": 50000
+      "price": 45000
     },
     {
+      "id": "dkSuftkrD8M",
       "title": "Dyson",
-      "price": 35000,
-      "id": "Ql9LJQda-Fk"
+      "price": 40000
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
